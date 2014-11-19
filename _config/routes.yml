@@ -1,0 +1,7 @@
+---
+Name: modelascontrollerroutes
+---
+Director:
+  rules:
+    'check': 'OdeonPage_Controller',
+    'check/$ID/$OtherID': 'OdeonPage_Controller'

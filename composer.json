@@ -1,0 +1,18 @@
+{
+    "name": "mattclegg/odeon-availability-checker",
+    "description": "Check availability for film showings at odeon",
+    "type": "silverstripe-module",
+    "homepage": "https://github.com/mattclegg/silverstripe-odeonavailabilitychecker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mattclegg",
+            "email": "cleggmatt@gmail.com"
+        }
+    ],
+    "require": {
+        "silverstripe/cms": "~3.1",
+        "silverstripe/framework": "~3.1",
+        "sunra/php-simple-html-dom-parser": "dev-master"
+    }
+}
