@@ -39,12 +39,14 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div id='map'></div>
-					<br/>
-					<a href="/" title="$Title.XML" class="nohover">
-						<div class="alert alert-success">
-							<h5><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>&nbsp;View all cinemas</h5>
-						</div>
-					</a>
+					<% if CurrentCinema %><% else %>
+						<br/>
+						<a href="/" title="$Title.XML" class="nohover">
+							<div class="alert alert-success">
+								<h5><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>&nbsp;View all cinemas</h5>
+							</div>
+						</a>
+					<% end_if %>
 				</div>
 				<div class="col-md-8">
 					<% if CurrentFilm %>
@@ -133,7 +135,6 @@
 			zoomControl: false
 		})<% if CurrentCinema %><% with CurrentCinema %>.setView([$lat, $lng], 2).setZoom(12)<% end_with %><% else %>.setZoom(5)<% end_if %>;
 
-		<% if CurrentCinema %><% else %>
 		// Disable drag and zoom handlers.
 		map.dragging.disable();
 		map.touchZoom.disable();
@@ -142,7 +143,6 @@
 
 		// Disable tap handler, if present.
 		if (map.tap) map.tap.disable();
-		<% end_if %>
 		<% loop AllCinemas %>
 			<% if Address %>
 				L.mapbox.featureLayer({
@@ -164,8 +164,6 @@
 				}).addTo(map);
 			<% end_if %>
 		<% end_loop %>
-
-
 	</script>
 </body>
 </html>
