@@ -16,7 +16,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-5">
-					<h1><a href="home" accesskey="H" title="Odeon availability checker" class="brand">Odeon availability checker</a></h1><h2>* Not affiliated by Odeon</h2>
+					<h1><a href="home" accesskey="H" title="Odeon availability checker" class="brand">Odeon availability checker</a></h1><h2>* Not affiliated with Odeon</h2>
 				</div>
 				<div class="col-md-7"><div class="well">
 					<p class="lead">Quickly check availability at Odeon</p><p>Tired of clicking through several screens, being asked to signup and then find that the only availability are for <i>Wheelchair Accessible</i> seats? Let us click through the screens for you.. Choose your cinema, then film and the only times shown do have availability!</p>
@@ -72,11 +72,11 @@
 						<% end_with %>
 						<% if Top.CurrentScreenings %>
 							<div class="row">
-								<% loop Top.CurrentScreenings.GroupedBy(GroupedByTitle) %>
+								<% loop Top.CurrentScreenings.GroupedBy(GroupedByTime) %>
 									<div class="col-md-6">
-										<h3>$GroupedByTitle</h3>
-										<% loop Children.GroupedBy(GroupedByTime) %>
-											<h4>$GroupedByTime&nbsp;<% loop Children.First %><a href="$Link"><span class="badge">$Availability&nbsp;+</span>&nbsp;$Title</a><% end_loop %></h4>
+										<h3>$GroupedByTime</h3>
+										<% loop Children.GroupedBy(GroupedByTitle) %>
+											<h4>$GroupedByTitle&nbsp;<% loop Children.First %><a href="$Link"><span class="badge">$Availability&nbsp;+</span>&nbsp;$Title</a><% end_loop %></h4>
 										<% end_loop %>
 									</div>
 									<% if Even %></div><div class="row"><% end_if %>
