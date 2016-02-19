@@ -46,12 +46,12 @@ class OdeonScreening extends DataObject {
 		return "https://www.odeon.co.uk/{$this->SessionURL}";
 	}
 
-	public function checkAgainstAPI(){
+	public function checkAgainstAPI() {
 		//Resut has been recorded as 0 (never going to increase)
-		if($this->Availability=="0") {
+		if ($this->Availability == "0") {
 			return false;
 			//Result is over an hour old (might have decreased)
-		} elseif($this->olderThen()) {
+		} elseif ($this->olderThen()) {
 			return true;
 			//Just use cached version
 		} else {
@@ -59,11 +59,14 @@ class OdeonScreening extends DataObject {
 		}
 	}
 
+	/**
+	 * @param string $callerClass
+	 */
 	public static function get($callerClass = null, $filter = "", $sort = "", $join = "", $limit = null, $containerClass = 'DataList') {
 		$get = parent::get($callerClass, $filter, $sort, $join, $limit, $containerClass);
 		$now = SS_Datetime::now()->getValue();
-		foreach($get as $x) {
-			if($x->ScreeningTime < $now) {
+		foreach ($get as $x) {
+			if ($x->ScreeningTime < $now) {
 				$get->removeByID($x->ID);
 				$x->delete();
 			}
